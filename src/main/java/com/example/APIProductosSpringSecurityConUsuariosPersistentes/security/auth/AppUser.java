@@ -21,7 +21,7 @@ public class AppUser implements UserDetails {
     private String username;
     private String password;
     @JsonBackReference //omitted from serialization
-    @ManyToMany(cascade = CascadeType.DETACH) //no elimino los permisos si elimino un usuario
+    @ManyToMany(cascade = CascadeType.DETACH, fetch = FetchType.EAGER) //no elimino los permisos si elimino un usuario
     @JoinTable(
             name="user_X_authorities",
             joinColumns = @JoinColumn(name="user_id"),
